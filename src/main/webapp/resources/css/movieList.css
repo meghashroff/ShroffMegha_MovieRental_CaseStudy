@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+
+#main_container {
+    width: 100%;
+    
+}
+
+#bgMovieList {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    z-index:-5;
+    /* filter: blur(1px); */
+    filter: drop-shadow();
+}
+
+
+#genre_container {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+thead tr th {
+ /* background-color: rgb(75, 73, 73); */
+    font-size: 30px;
+}
+td, th {
+    /* color: white; */
+    font-size: 20px;
+    border:  1;
+    border-color:rgb(241, 235, 235);
+    
+
+    /* border-right-style: dotted; */
+    border-width: 1px;
+    border-bottom-style: groove;
+    /* border-style: ; */
+    border-color: 555;
+    padding : 150,0,0,150;
+    margin: 150,10,10,150;
+    background-color: rgba(240, 233, 233, 0.747);
+    font-family: 'Kaushan Script', cursive;
+}
+
+table{
+    width: 75%;
+    margin-left: 15%;
+    text-align: left;
+    border: 5px double black;
+    border-collapse: collapse;
+  }
+
+a {
+    color: black;
+    text-decoration: cornsilk;
+}
+
+footer a {
+    display: flex ;
+    text-align: center;
+    justify-content: center;
+    /* align-items: flex-end; */
+}
+
+.smallMovieImg{
+    width: 100px; height:100px; position: relative; filter: none; 
+}
+
+label {
+    color: rgb(82, 76, 76);    
+    font-size: 30px;
+    font-family: 'Kaushan Script', cursive;
+}
+
+#genre{
+    border-radius: 15px;
+    width: 130px;
+    height: 40px;
+    color: grey;
+    text-transform: uppercase;
+}
+
+select{
+    background-color: rgb(187, 187, 187);
+    color: black;
+}
+
+option{
+    
+    /* color: grey; */
+    background-color: dark grey;
+    /* text-decoration: black; */
+    font-family: 'Kaushan Script', cursive;
+    color: black;
+}
+
+tbody tr:nth-child(even){
+    background-color: light gray;
+}
+
+tbody tr:nth-child(odd){
+    background-color: rgb(17, 16, 16);
+}
+
+div>a {
+               
+    margin-top: 10px;
+    margin-left: 93%;
+    text-align: right;  
+    text-transform: capitalize;
+    font-size: x-large;
+    color: rgb(17, 16, 16);  
+    padding: 20px;  
+    /* justify-content: right; */
+    font-family: 'Kaushan Script', cursive;
+   
+}

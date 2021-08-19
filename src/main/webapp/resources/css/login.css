@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+
+.login_container{
+        width: 350px;  
+        height: 300px;  
+        overflow: hidden;  
+        margin: auto; 
+        margin-top: 50px; 
+        padding: 50px;  
+        background: rgb(238, 129, 112);  
+        border-radius: 15px ; 
+        box-shadow: 10px 10px 5px;
+
+    }
+
+
+body  {  
+    margin: 0;  
+    padding: 0;  
+    background-color: beige;  
+    font-family: 'Shadows Into Light', cursive;
+}  
+
+img {
+    width: 100%;
+    filter: blur(10px);
+    position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;
+}
+
+h1 {
+             
+    margin-top: 40px;
+    text-align: center;  
+    text-transform: uppercase;
+    font-size: xx-large;
+    /* color: white; */
+    /* color: rgb(235, 62, 76);   */
+    /* color:rgb(114, 84, 245) , white, red; */
+    color: rgb(235, 199, 199);
+    padding: 20px; 
+}
+
+label{
+    color: black;
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+#username, #password {
+    width: 300px;  
+    height: 30px;  
+    border: none; 
+    margin-left: 30px; 
+    border-radius: 3px;  
+    /* padding-left: 3px; */
+}
+
+#login{  
+    width: 300px;  
+    height: 30px;  
+    margin-left: 30px;
+    border: none;  
+    border-radius: 17px;  
+    /* padding-left: 7px;   */
+    color: rgb(255, 94, 0);  
+}
+
+div>a {
+               
+        margin-top: 10px;
+        margin-left: 95%;
+        text-align: right;  
+        text-transform: capitalize;
+        font-size: x-large;
+        color: rgb(240, 101, 113);  
+        padding: 20px;  
+        justify-content: right;
+        text-decoration: none;
+    }
+    

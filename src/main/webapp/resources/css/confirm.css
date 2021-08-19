@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
+
+#confirmForm {
+    display: flex;
+    justify-content: center;
+}
+
+input[submit] {
+    align-items: center;
+    justify-content: center;
+
+}
+
+h1{
+    color : white;
+    font-size: 40px;
+}
+
+p{
+    text-overflow: clip;
+    box-sizing: 50;
+}
+
+th  {
+    font-size: 50px;
+    text-align: left;
+    color : white;
+    font-style: italic;
+}
+
+td{
+    /* background-color: white; */
+    text-align: left;
+    max-width: 100px;
+    text-overflow: clip;
+    color: white;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+}
+table{
+    width: 40%;
+    /* margin-left: 15%; */
+    text-align: left;
+    /* border: 5px double black; */
+    /* border-collapse: collapse; */
+
+}
+
+#confirmRent{
+    display: flex;
+    justify-content: flex-start;
+    text-align: end;
+}
+
+#toRent{
+    width: 180px;  
+    height: 30px;  
+    margin-left: 30px;
+    border: none;  
+    border-radius: 17px;  
+    /* padding-left: 7px;   */
+    color: black;  
+    font-weight: bold;
+}
+button {
+    width: 70px;  
+    height: 30px;  
+    margin-left: 35px;
+    border: none;  
+    border-radius: 13px;  
+    /* padding-left: 7px;   */
+    color: rgb(255, 94, 0);  
+
+}
+
+button>a {
+    text-decoration: none;
+}
+
+div > a {
+               
+        margin-top: 10px;
+        margin-left: 94%;
+        text-align: right;  
+        text-transform: capitalize;
+        font-size: 130%;
+        color: white;  
+        padding: 20px;  
+        justify-content: right;
+        text-decoration: none;
+ 		font-family: 'Comic Neue', cursive;
+}

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
+
+h1 {
+    text-align: center;
+    
+    /* font-family: 'Zen Tokyo Zoo', cursive; */
+}
+
+.register{
+    text-align: right;
+}
+
+div>a {
+    text-decoration: none;
+    /* color: #555; */
+    color: rgb(230, 221, 207);
+}
+
+footer{
+    margin-top: auto;
+color: white;
+}
+
+p{
+  color: wheat; 
+  font-size: large;
+  font-family: cursive;      
+}
+
+button {
+    width: 100px;  
+    height: 30px;  
+    margin-left: 35px;
+    border: none;  
+    border-radius: 13px;  
+    /* padding-left: 7px;   */
+
+}
+
+button>a {
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive;
+}
+
