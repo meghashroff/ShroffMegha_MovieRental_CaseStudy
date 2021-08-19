@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
+//Megha Shroff
 @Entity
 @Table(name = "rentalTransactions") 
 public class RentalTransaction {
