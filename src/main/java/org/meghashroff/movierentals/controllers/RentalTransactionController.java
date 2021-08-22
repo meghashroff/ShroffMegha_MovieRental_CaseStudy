@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.meghashroff.movierentals.models.Movie;
@@ -44,9 +45,29 @@ public class RentalTransactionController {
 		return "login_page";
 	}
 	
-	
+
 	@PostMapping("/payment")
-	public String completeTransaction(@RequestParam("movieId") Integer movieId, HttpSession session){
+	public String completeTransaction(HttpSession session, HttpServletRequest request) {
+		User user = (User) session.getAttribute("currentUser");
+		if(user!=null) {
+			Set<Movie> movieSet = (HashSet<Movie>)session.getAttribute("selectedMovies");
+			RentalTransaction rental = new RentalTransaction();
+			rental.setMovies(movieSet);
+			rental.setPaymentDate(LocalDateTime.now());
+			
+			rental = rentalTransactionService.saveTransaction(rental);
+			user.getRentalTrans().add(rental);
+			
+			request.setAttribute("currentTransaction", rental);
+			userService.save(user);
+//		return "redirect:/";
+		return "display_transaction_complete";
+		}
+		return "redirect:/LoginPage";
+	}
+	
+/*	@PostMapping("/payment")
+	public String completeTransaction(@RequestParam("movieId") Integer movieId, HttpSession session, HttpServletRequest request){
 		User user = (User) session.getAttribute("currentUser");
 		if(user != null) {
 //			user = userService.findByUserId(user.getUserId());
@@ -67,11 +88,13 @@ public class RentalTransactionController {
 			
 			rental = rentalTransactionService.saveTransaction(rental);
 			user.getRentalTrans().add(rental);
+			
+			request.setAttribute("currentTransaction", rental);
 			userService.save(user);
 //			return "redirect:/";
 			return "display_transaction_complete";
 		}
 		return "redirect:/login_page";
 	}
-	
+	*/
 }

@@ -38,20 +38,33 @@ public class UserController {
 	}
 
 	@PostMapping("/createUser")
-	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult errors) {
-		
-		if (errors.hasErrors()) {
-			System.out.println("errors: "+ errors);
+	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+	
+		if (bindingResult.hasErrors()) {
 			return "sign_up";
 		}
-		System.out.println(user.toString());
+		
+		User userExists = userService.findByEmail(user.getEmail());
+		if (userExists == null) {
 		User savedUser = userService.createUser(user);
 		System.out.println(savedUser.toString());
-		return "redirect:/";
+		return "redirect:/LoginPage";
+		}
+		else {
+			bindingResult.rejectValue("email", "error.user",
+                    "There is already a user registered with the user name provided");
+			return "sign_up";
+		}
 	}
 	
 	@PostMapping("/login")
-	public String searchUserByEmail(@RequestParam("username") String userEmail, @RequestParam("password") String password, HttpSession session) {
+	public String searchUserByEmail(@RequestParam("username") String userEmail, @RequestParam("password") String password, 
+			HttpSession session) {
+
+//		if (bindingResult.hasErrors()) {
+//			return "login_page";
+//		}
+	
 		User currentUser = userService.findByEmail(userEmail);
 		
 		if(currentUser != null) {
@@ -83,11 +96,9 @@ public class UserController {
 	
 	@PostMapping("/updatePassword")
 	public String showUpdatePassword(@RequestParam("email") String userEmail, @RequestParam("oldPassword") String password, @RequestParam("newPassword") String newPassword ) {
-		//System.out.println("In showUpdatePassword");
 		System.out.println("Username: "+userEmail);
 		System.out.println("OldPassword "+password);
 		System.out.println("NewPassword "+newPassword);
-//		User user = userService.findByEmail(userEmail);
 		User user = userService.findByUserEmailAndPassword(userEmail,password);
 		System.out.println("Update user info for: "+user);
 		
@@ -101,5 +112,21 @@ public class UserController {
 	@GetMapping("/navToLoginPage")
 	public String showBackToLoginPage() {
 		return "login_page";
+	}
+	
+	@GetMapping("/accountInfo")
+	public String showUserAccountInfo() {
+		System.out.println("In show user account method");
+		return "user_account";
+	}
+	
+	@GetMapping("/deleteAccount")
+	public String deleteUserAccount(HttpSession session) {
+		System.out.println("In delete user account method");
+		User user = (User)session.getAttribute("currentUser");
+		User delUser  = userService.findByUserId(user.getUserId());
+		userService.deleteUserAccountById(delUser.getUserId());
+		session.removeAttribute("currentUser");
+		return "redirect:/";
 	}
 }

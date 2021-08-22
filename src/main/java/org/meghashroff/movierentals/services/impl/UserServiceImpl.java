@@ -5,7 +5,6 @@ import org.meghashroff.movierentals.services.UserService;
 import org.meghashroff.movierentals.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -19,14 +18,11 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User createUser(User user) {
-		//.setRegistrationDate(LocalDateTime.now());
 		return userRepository.save(user);
 	}
 
 	@Override
-//	@Transactional
 	public User findByEmail(String email) {
-//		return userRepository.findUserByEmail(email);
 		return userRepository.findByEmail(email);
 	}
 
@@ -41,9 +37,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-//	@Transactional
 	public User findByUserEmailAndPassword(String email, String password) {
 		return userRepository.findByEmailAndPassword(email, password);
+	}
+
+	@Override
+	public void deleteUserAccountById(Integer userId) {
+		userRepository.deleteById(userId);
 	}
 
 }

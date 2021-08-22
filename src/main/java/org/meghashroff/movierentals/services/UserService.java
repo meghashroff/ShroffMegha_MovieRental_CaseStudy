@@ -9,5 +9,5 @@ public interface UserService {
 	public User findByUserId(Integer userId);
 	public User save(User user);
 	public User findByUserEmailAndPassword(String email, String password);
-//	public User merge(User user);
+	public void deleteUserAccountById(Integer userId);
 }

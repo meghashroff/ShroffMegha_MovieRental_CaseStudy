@@ -3,7 +3,6 @@ package org.meghashroff.movierentals.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,9 +32,6 @@ public class Movie {
 	@Column(name = "movieImagePath", nullable=false, length=255)
 	private String movieImagePath;
 	
-	@Column(name = "movieLink")
-	private String movieLink;
-	
 	@Column(name= "movieDescription", length=500)
 	private String movieDescription;
 
@@ -57,7 +53,6 @@ public class Movie {
 		this.movieGenre = movieGenre;
 		this.movieReleaseYear = movieReleaseYear;
 		this.movieImagePath = movieImagePath;
-		this.movieLink = movieLink;
 		this.movieDescription = movieDescription;
 	}
 	
@@ -68,7 +63,6 @@ public class Movie {
 		this.movieGenre = movieGenre;
 		this.movieReleaseYear = movieReleaseYear;
 		this.movieImagePath = movieImagePath;
-		this.movieLink = movieLink;
 		this.movieDescription = movieDescription;
 		this.rentals = rentals;
 	}
@@ -113,14 +107,6 @@ public class Movie {
 		this.movieImagePath = movieImagePath;
 	}
 
-	public String getMovieLink() {
-		return movieLink;
-	}
-
-	public void setMovieLink(String movieLink) {
-		this.movieLink = movieLink;
-	}
-
 	public String getMovieDescription() {
 		return movieDescription;
 	}
@@ -145,7 +131,6 @@ public class Movie {
 		result = prime * result + ((movieGenre == null) ? 0 : movieGenre.hashCode());
 		result = prime * result + ((movieId == null) ? 0 : movieId.hashCode());
 		result = prime * result + ((movieImagePath == null) ? 0 : movieImagePath.hashCode());
-		result = prime * result + ((movieLink == null) ? 0 : movieLink.hashCode());
 		result = prime * result + ((movieName == null) ? 0 : movieName.hashCode());
 		result = prime * result + ((movieReleaseYear == null) ? 0 : movieReleaseYear.hashCode());
 		return result;
@@ -180,11 +165,6 @@ public class Movie {
 				return false;
 		} else if (!movieImagePath.equals(other.movieImagePath))
 			return false;
-		if (movieLink == null) {
-			if (other.movieLink != null)
-				return false;
-		} else if (!movieLink.equals(other.movieLink))
-			return false;
 		if (movieName == null) {
 			if (other.movieName != null)
 				return false;
@@ -201,10 +181,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", movieName=" + movieName + ", movieGenre=" + movieGenre
-				+ ", movieReleaseYear=" + movieReleaseYear + ", movieImagePath=" + movieImagePath + ", movieLink="
-				+ movieLink + ", movieDescription=" + movieDescription +"]";
+				+ ", movieReleaseYear=" + movieReleaseYear + ", movieImagePath=" + movieImagePath
+				+ ", movieDescription=" + movieDescription + "]";
 	}
-
-	
-	
 }

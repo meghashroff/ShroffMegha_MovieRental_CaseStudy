@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ page import ="org.meghashroff.movierentals.models.Movie" %>
+<%@ page import ="org.meghashroff.movierentals.models.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +17,30 @@
     <link rel="stylesheet" type="text/css" href="css/movieList.css" />
 </head>
 <body>
+<% 
+   if(session.getAttribute("currentUser")!=null)
+   { 
+   		User user =  (User)session.getAttribute("currentUser");
+   %>
+	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println(user.getFirstName()); %></a>
+	  	<span>|</span>
+	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
+   <% 		
+   } 
+   else 
+   {
+   %>
+	<div><a href="${pageContext.request.contextPath}/LoginPage" id="signIn">Sign In</a></div>
+   <%
+   } 
+   %>
     <div id="main_container" >
         <img src="images/movieBackground1.jpg" id="bgMovieList">
         <header>
         <%@ include file="navigation.html" %>
         <!-- <div id="homePage"><a href="${pageContext.request.contextPath}/" >Home</a></div>-->
     	</header>
-        <form>
+        <form name="submitMoviesForRent" action="selMovieList" method="get">
         <div id="genre_container">
         <label for="movieList">Genre</label>
         <br>
@@ -38,7 +56,7 @@
             <table name="movieList" id="movieList">
             <thead>
                 <tr class="header">
-                    <!-- <th></th>  -->
+                    <th></th>
                     <th >Movie</th>
                     <th>Name</th>
                     <th>Genre</th>
@@ -51,10 +69,9 @@
        	for(Movie movie: movies) {
        	%>
        		<tr class= <%=movie.getMovieGenre()%>>
-       	<%-- 		<td><input type="checkbox" name="movieCheckBox" value=<%=movie.getMovieId() %>> </td>
-       	 --%>
+       	 		<td><input type="checkbox" name="selectedMovies" value=<%=movie.getMovieId()%> /> </td>
        	 		<td><img src=<%=movie.getMovieImagePath()%> class="smallMovieImg"></td> 
-       			<td><a href="MovieInfo/<%=movie.getMovieId() %>" ><%=movie.getMovieName() %></a></td>
+       			<td><a href="MovieInfo/<%=movie.getMovieId() %>" target="_blank"><%=movie.getMovieName() %></a></td>
        			<td><%=movie.getMovieGenre()%></td>
        			<td><%=movie.getMovieReleaseYear()%></td>
        		</tr><% 	
@@ -67,10 +84,8 @@
         
         </div>
         
-        </form>
-        <!-- <form name="submitMoviesForRent" action="selMovieList" method="get">
-        	<input type="submit" name="submitSelectedMovies" value="Rent Movies"/>
-       	</form> -->
+        	<input type="submit" name="submitSelectedMovies" value="Rent Movies" />
+       	</form>
         <br>
         <!-- <footer>
              <a href= "${pageContext.request.contextPath}/">Home</a>

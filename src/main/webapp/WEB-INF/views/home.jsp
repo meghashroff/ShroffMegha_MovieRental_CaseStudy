@@ -23,7 +23,7 @@
    { 
    		User user =  (User)session.getAttribute("currentUser");
    %>
-	    <a href="#"><% out.println("Welcome "+ user.getFirstName()); %></a>
+	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println("Welcome "+ user.getFirstName()); %></a>
 	  	<span>|</span>
 	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
    <% 		
@@ -31,7 +31,7 @@
    else 
    {
    %>
-		<a href="${pageContext.request.contextPath}/SignUp">Sign Up</a>  <span>|</span> <a href="${pageContext.request.contextPath}/LoginPage" id="signIn">Sign In</a></div>
+		<a href="${pageContext.request.contextPath}/SignUp">Sign Up</a>  <span>|</span> <a href="${pageContext.request.contextPath}/LoginPage" id="signIn">Sign In</a>
    <%
    } 
    %>

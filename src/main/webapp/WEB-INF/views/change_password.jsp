@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+ <link rel = "stylesheet" type="text/css" href="css/login.css">
+   
 </head>
 <body>
 	<div>
@@ -12,6 +14,8 @@
     
     <div><a href="${pageContext.request.contextPath}/">Home</a></div>
     <h1>Change Password</h1>
+
+<div class="changePwd_container">
 <form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post">
         <div>
 			<label for="email">Username</label><br>
@@ -37,5 +41,6 @@
             <input type="submit" id="changePwd" value = "Change Password" />    
         </div>
 </form>    
+</div>
 </body>
 </html>

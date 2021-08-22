@@ -2,7 +2,6 @@ package org.meghashroff.movierentals.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,7 +41,7 @@ public class User {
 	@Size(min=10, max=10, message = "Should be 10 digits")
 	private String phoneNo;
 	
-	@OneToMany(targetEntity = RentalTransaction.class, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = RentalTransaction.class, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<RentalTransaction> rentalTrans;
 	
 	public User() {

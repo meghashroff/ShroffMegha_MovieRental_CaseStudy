@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel = "stylesheet" type="text/css" href="css/signUp.css">
-    <!--  <script src="js/signUp.js"></script> -->
+      <script src="js/signUp.js"></script> 
     
 </head>
 <style>
@@ -25,7 +25,7 @@
     <h1>Sign Up</h1>     
     
     <div class="signIn_container">
-    <form:form name="signUpForm" id="signUpForm" method="post" action="createUser" modelAttribute="user">
+    <form:form name="signUpForm" id="signUpForm" method="post" action="createUser" modelAttribute="user" onsubmit="return validateUser()">
     		<div>
 			<form:label path="firstName">First Name</form:label> <form:errors path="firstName" class="form-errors"/> 
 			<br>
@@ -77,8 +77,11 @@
 		
 		<div>
             <input type="submit" id="login" value = "Sign Up">    
-		</div>
-		 <h2></h2>
+        </div>
+        <br>
+        <div>
+		<a href="${pageContext.request.contextPath}/LoginPage" id="signIn" style="margin: 30px;">Already registered, login here</a>
+		</div> <h2></h2>
 		</form:form>
            
 </div>

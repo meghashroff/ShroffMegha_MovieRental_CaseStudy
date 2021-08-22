@@ -1,28 +1,17 @@
 package org.meghashroff.movierentals.controllers;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.meghashroff.movierentals.models.Movie;
-import org.meghashroff.movierentals.models.RentalTransaction;
-import org.meghashroff.movierentals.models.User;
 import org.meghashroff.movierentals.services.MovieService;
-import org.meghashroff.movierentals.services.RentalTransactionService;
-import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -30,14 +19,10 @@ public class MovieController {
 
 
 	private MovieService movieService;
-	private UserService userService;
-	private RentalTransactionService rentalTransactionService;
-
+	
 	@Autowired
-	public MovieController(MovieService movieService, UserService userService, RentalTransactionService rentalTransactionService) {
+	public MovieController(MovieService movieService) {
 		this.movieService = movieService;
-		this.userService = userService;
-		this.rentalTransactionService = rentalTransactionService;
 	}
 	
 	@GetMapping("/Movies")
@@ -66,11 +51,9 @@ public class MovieController {
 	}
 
 	@GetMapping("/addMovie")
-	public String showMovieSelectionPage(@RequestParam("movieToRent") int movieId, Model model, HttpSession session) {
-		model.addAttribute("movieInformation", movieService.getMovieInformationById(movieId));
-		List<Movie> selMovieList = new ArrayList<Movie>();
-		selMovieList.add(movieService.getMovieInformationById(movieId));
-//		session.setAttribute("selMovieList", selMovieList);
+	public String showMovieSelectionPage(@RequestParam("movieToRent") int movieId, Model model, HttpSession session, HttpServletRequest request) {
+		Set<Movie> movieSet = (Set<Movie>)session.getAttribute("selectedMovies");
+		movieSet.add(movieService.getMovieInformationById(movieId));
 		return "rented_movies_list";
 	}
 	
@@ -84,16 +67,10 @@ public class MovieController {
 		
 	@GetMapping("remove/{movieId}")
 	public String removeFromList(@PathVariable("movieId") int movieId, HttpSession session) {
-//		List<Movie> movieList = (List)session.getAttribute("selMovieList");
-//		System.out.println(movieList.size());
-//		for(int i = 0; i <moieList.size(); i++) {
-//			if(movieList.get(i).getMovieId()==movieId) {
-//				movieList.remove(movieId);
-//				break;
-//			}
-//		}
-	return "rented_movies_list";
-//		return null;
+		Set<Movie> movieSet = (Set<Movie>)session.getAttribute("selectedMovies");
+		movieSet.remove(movieService.getMovieInformationById(movieId));
+		System.out.println("movieSet: "+movieSet);
+		return "rented_movies_list";
 	}
 
 	@GetMapping("/navToMoviesPage")
@@ -103,7 +80,16 @@ public class MovieController {
 	}
 	
 	@GetMapping("selMovieList")
-	public String showMoviesListSelectedForRent() {
+	public String showMoviesListSelectedForRent(@RequestParam String[] selectedMovies, HttpServletRequest request, HttpSession session) {
+		Set<Movie> movieSet = new HashSet<Movie>();
+		if(selectedMovies!=null){
+			for(int i=0;i<selectedMovies.length;i++) {
+				System.out.println(movieService.getMovieInformationById(Integer.parseInt(selectedMovies[i])));
+			movieSet.add(movieService.getMovieInformationById(Integer.parseInt(selectedMovies[i])));
+			}
+		}
+		session.setAttribute("selectedMovies", movieSet);
 		return "rented_movies_list";
 	}
+	
 }

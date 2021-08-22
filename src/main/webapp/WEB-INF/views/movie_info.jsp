@@ -14,10 +14,11 @@
 		Movie movie = (Movie)request.getAttribute("movieInformation");
   	%>
 	<img src="./../<%=movie.getMovieImagePath() %>" style="position: fixed; z-index: -1;  width: 100%;  height: 100%">
-    <div>
+   <%--  <div>
     <%@ include file="navigation.html" %>
 	</div>
-	<table>
+	 --%>
+	 <table>
         <tr>
             <th><%=movie.getMovieName() %></th>
         </tr>
@@ -30,7 +31,7 @@
         <section>
 	        <form method="get" action="${pageContext.request.contextPath}/addMovie">
 	    	<input type="hidden" name="movieToRent" value="<%=movie.getMovieId()%>"/>					
-			<input type="submit" value="Rent Movie"/>
+	<!--  		<input type="submit" value="Rent Movie"/> -->
 			</form>		 
 	        
         <!-- <input type="submit" value = "Back" > -->
