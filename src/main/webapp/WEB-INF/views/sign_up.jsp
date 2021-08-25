@@ -42,6 +42,14 @@
 			<form:errors path="lastName" class="form-errors"/>
 		</div>
 		<br>
+		<div>
+			<form:label path="username">User Name</form:label>
+			<br>
+			<form:input type="text" name = "username" class="boxSize" placeholder="Please enter the user name" path="username" />
+			<br>
+			<form:errors path="username" class="form-errors"/>
+		</div>
+		<br>
     	<div>
 			<form:label path="email">Email</form:label>	<form:errors path="email" class="form-errors"/>
 		

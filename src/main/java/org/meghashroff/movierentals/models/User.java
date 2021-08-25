@@ -29,12 +29,16 @@ public class User {
 	
 	private String lastName;
 	
-	@Column(name = "email", nullable=false, length=255, unique=true)
+	@Column(name = "username", nullable=false, length=255, unique=true)
+	@NotEmpty (message = "Username cant be empty.")
+	private String username;
+	
+	@Column(name = "email", nullable=false, length=255)
 //	@NotEmpty(message="Email cant be empty")
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", message = "Invalid email")
 	private String email;
 
-	@Column(name = "password", nullable=false, length=50)
+	@Column(name = "password", nullable=false, length=100)
 	@NotEmpty (message = "Password cant be empty")
 	private String password;
 	
@@ -47,17 +51,37 @@ public class User {
 	public User() {
 		this.rentalTrans = new ArrayList<>();
 	}
+	
+//	public User(String firstName, String lastName, String email, String password, String phoneNo,
+//			List<RentalTransaction> rentalTrans) {
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.password = password;
+//		this.phoneNo = phoneNo;
+//		this.rentalTrans = rentalTrans;
+//	}
 
-	public User(Integer userId, String firstName, String lastName, String email, String password, String phoneNo,
-			List<RentalTransaction> rentalTrans) {
-		this.userId = userId;
+	public User(String firstName, String lastName, String username, String email, String password, String phoneNo)	{
+		this();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username= username;
 		this.email = email;
 		this.password = password;
 		this.phoneNo = phoneNo;
-		this.rentalTrans = rentalTrans;
 	}
+
+//	public User(Integer userId, String firstName, String lastName, String email, String password, String phoneNo,
+//			List<RentalTransaction> rentalTrans) {
+//		this.userId = userId;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.password = password;
+//		this.phoneNo = phoneNo;
+//		this.rentalTrans = rentalTrans;
+//	}
 	
 	public Integer getUserId() {
 		return userId;
@@ -83,6 +107,14 @@ public class User {
 		this.lastName = lastName;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getEmail() {
 		return email;
 	}

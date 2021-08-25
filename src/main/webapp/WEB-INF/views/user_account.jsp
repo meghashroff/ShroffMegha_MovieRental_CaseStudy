@@ -18,10 +18,10 @@
 <h1>Account Information</h1>
 
 
-<%   if(session.getAttribute("currentUser")!=null)
-	{	 
-		User user =  (User)session.getAttribute("currentUser");
-		%>
+<%  
+	User user = (User)request.getAttribute("currentUser");
+	if(user!=null)
+	{		%>
 			<h3 style="text-align: center"> <%=user.getFirstName()%></h3>
 			<table>
 				<thead>

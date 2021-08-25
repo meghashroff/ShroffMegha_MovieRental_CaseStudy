@@ -71,7 +71,8 @@ footer a {
 }
 
 label {
-    color: rgb(82, 76, 76);    
+    color: rgb(82, 76, 76);   
+    color:  #e1cdb3;
     font-size: 30px;
     font-family: 'Kaushan Script', cursive;
 }
@@ -107,15 +108,24 @@ tbody tr:nth-child(odd){
 }
 
 div>a {
-               
+     
+    text-align: right;          
     margin-top: 10px;
-    margin-left: 93%;
-    text-align: right;  
-    text-transform: capitalize;
+ /*    margin-left: 80%;
+  */   text-transform: capitalize;
     font-size: x-large;
     color: rgb(17, 16, 16);  
     padding: 20px;  
     /* justify-content: right; */
     font-family: 'Kaushan Script', cursive;
    
+}
+
+.register{
+    text-align: right;
+}
+
+#rent{
+    text-align: center;
+	
 }

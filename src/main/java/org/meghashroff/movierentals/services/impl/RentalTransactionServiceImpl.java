@@ -21,12 +21,12 @@ public class RentalTransactionServiceImpl implements RentalTransactionService{
 	}
 
 	@Override
-	public RentalTransaction saveTransaction(RentalTransaction rentalTransaction) {
+	public RentalTransaction saveRentalTransaction(RentalTransaction rentalTransaction) {
 		return rentalTransactionRepository.save(rentalTransaction);
 	}
 
 	@Override
-	public RentalTransaction findById(int id) {
+	public RentalTransaction findByRentalTransactionId(int id) {
 		Optional<RentalTransaction> rentalOpt = rentalTransactionRepository.findById(id);
 		if (rentalOpt.isPresent()) {
 			return rentalOpt.get();

@@ -1,3 +1,19 @@
+
+function movieSel(){
+
+	var mes = document.querySelector("h6");
+	var checkboxes = document.querySelectorAll("#checkedMovies");
+	for(var i=0;i<checkboxes.length; i++)
+	{
+		if(checkboxes[i].checked==true){
+			return true;
+		}
+	}
+	mes.innerHTML="Please select atleast one";
+	return false;
+}
+
+
 function filterByGenre(value){
     // console.log(value);
     // var genreList = document.getElementsByClassName(value);
@@ -13,7 +29,7 @@ function filterByGenre(value){
     //     } 
     // }
 
-
+	
     let list = document.getElementsByTagName('tr');
     let originalList = list;
     let trList = setOriginalList(originalList);

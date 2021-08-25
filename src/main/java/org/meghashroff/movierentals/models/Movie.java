@@ -47,7 +47,7 @@ public class Movie {
 	}
 
 	public Movie(String movieName, String movieGenre, String movieReleaseYear, String movieImagePath,
-			String movieLink, String movieDescription) {
+			String movieDescription) {
 		this();
 		this.movieName = movieName;
 		this.movieGenre = movieGenre;

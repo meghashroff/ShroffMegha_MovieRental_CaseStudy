@@ -17,10 +17,17 @@
 
 <div class="changePwd_container">
 <form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post">
-        <div>
+        <!-- <div>
 			<label for="email">Username</label><br>
 	        <input type="email" name = "email" id="email" placeholder="Please enter your email id"/>
         </div> 
+         -->
+         
+         <div>
+			<label for="username">Username</label><br>
+	        <input type="text" name = "username" id="username" placeholder="Please enter your username"/>
+        </div> 
+        
         <br>
       	<div>
 	        <label for="oldPassword">Old Password</label><br>

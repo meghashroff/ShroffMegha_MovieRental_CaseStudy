@@ -17,11 +17,12 @@
     <link rel="stylesheet" type="text/css" href="css/movieList.css" />
 </head>
 <body>
-<% 
-   if(session.getAttribute("currentUser")!=null)
-   { 
-   		User user =  (User)session.getAttribute("currentUser");
-   %>
+<div class = register>
+<%-- <% 
+	User user = (User)request.getAttribute("currentUser");
+	if(user!=null)
+	{ 
+   	 %>
 	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println(user.getFirstName()); %></a>
 	  	<span>|</span>
 	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
@@ -30,17 +31,19 @@
    else 
    {
    %>
-	<div><a href="${pageContext.request.contextPath}/LoginPage" id="signIn">Sign In</a></div>
+	<a href="${pageContext.request.contextPath}/login" id="signIn">Sign In</a>
    <%
    } 
-   %>
+   %> --%>
+   <%@ include file="login_navigation.jsp" %>
+   </div>
     <div id="main_container" >
         <img src="images/movieBackground1.jpg" id="bgMovieList">
         <header>
         <%@ include file="navigation.html" %>
         <!-- <div id="homePage"><a href="${pageContext.request.contextPath}/" >Home</a></div>-->
     	</header>
-        <form name="submitMoviesForRent" action="selMovieList" method="get">
+        <form name="submitMoviesForRent" action="selMovieList" method="get"  onsubmit= "return movieSel()" >
         <div id="genre_container">
         <label for="movieList">Genre</label>
         <br>
@@ -52,6 +55,7 @@
             </select> 
         </div>
         <br>
+        <h6></h6>
         <div>
             <table name="movieList" id="movieList">
             <thead>
@@ -69,7 +73,7 @@
        	for(Movie movie: movies) {
        	%>
        		<tr class= <%=movie.getMovieGenre()%>>
-       	 		<td><input type="checkbox" name="selectedMovies" value=<%=movie.getMovieId()%> /> </td>
+       	 		<td><input type="checkbox" name="selectedMovies" value=<%=movie.getMovieId()%> id="checkedMovies" /> </td>
        	 		<td><img src=<%=movie.getMovieImagePath()%> class="smallMovieImg"></td> 
        			<td><a href="MovieInfo/<%=movie.getMovieId() %>" target="_blank"><%=movie.getMovieName() %></a></td>
        			<td><%=movie.getMovieGenre()%></td>
@@ -83,8 +87,9 @@
          
         
         </div>
-        
+        <div id="rent">
         	<input type="submit" name="submitSelectedMovies" value="Rent Movies" />
+       	</div>
        	</form>
         <br>
         <!-- <footer>

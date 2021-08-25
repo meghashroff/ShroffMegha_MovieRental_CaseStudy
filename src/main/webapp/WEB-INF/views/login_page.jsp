@@ -19,11 +19,18 @@
     <h1>Login Page</h1>     
     <div class="login_container">
   	    <form name="loginForm" action ="login" method="post" >
-        <div>
+        <!-- <div>
         <label for="username">Username</label><br>
         <input type="email" name = "username" id="username" placeholder="Please enter your email id" />
         
+        </div>
+         -->
+           <div>
+        <label for="username">Username</label><br>
+        <input type="text" name = "username" id="username" placeholder="Please enter your username" />
+        
         </div> 
+       
         <br>
         <div>
         <label for="password">Password</label><br>

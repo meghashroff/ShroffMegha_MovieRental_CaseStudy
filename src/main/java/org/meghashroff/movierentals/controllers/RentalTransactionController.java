@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.Movie;
 import org.meghashroff.movierentals.models.RentalTransaction;
 import org.meghashroff.movierentals.models.User;
@@ -14,6 +15,8 @@ import org.meghashroff.movierentals.services.MovieService;
 import org.meghashroff.movierentals.services.RentalTransactionService;
 import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +40,15 @@ public class RentalTransactionController {
 	
 	@GetMapping("/confirmPayment")
 	public String showPaymentPage(@RequestParam("movieSel") Integer movieSel, Model model, HttpSession session) {
-		model.addAttribute("movie", movieService.getMovieInformationById(movieSel));
-		User user = (User) session.getAttribute("currentUser");
+		model.addAttribute("movie", movieService.findByMovieId(movieSel));
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails)principal;
+		User user = null;
+		try {
+			user = userService.findByUsername(userDetails.getUsername());
+		} catch (UserNotFoundException e) {
+			System.out.println("User not found" + e.getMessage());
+		}
 		if(user != null) {
 			return "payment";
 		}
@@ -47,23 +57,34 @@ public class RentalTransactionController {
 	
 
 	@PostMapping("/payment")
-	public String completeTransaction(HttpSession session, HttpServletRequest request) {
-		User user = (User) session.getAttribute("currentUser");
+	public String completeTransaction(HttpSession session, HttpServletRequest request, Model model) throws UserNotFoundException {
+		//User user = (User) session.getAttribute("currentUser");
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails)principal;
+		User user = null;
+		try {
+			user = userService.findByUsername(userDetails.getUsername());
+		} catch (UserNotFoundException e) {
+			System.out.println("User not found");
+		throw new UserNotFoundException("User not found ");
+		}
+		System.out.println("User: "+user);
 		if(user!=null) {
 			Set<Movie> movieSet = (HashSet<Movie>)session.getAttribute("selectedMovies");
 			RentalTransaction rental = new RentalTransaction();
 			rental.setMovies(movieSet);
 			rental.setPaymentDate(LocalDateTime.now());
 			
-			rental = rentalTransactionService.saveTransaction(rental);
+			rental = rentalTransactionService.saveRentalTransaction(rental);
 			user.getRentalTrans().add(rental);
 			
 			request.setAttribute("currentTransaction", rental);
-			userService.save(user);
+			User savedUser = userService.createOrUpdateUser(user);
+			model.addAttribute("currentuser", savedUser);
 //		return "redirect:/";
 		return "display_transaction_complete";
 		}
-		return "redirect:/LoginPage";
+		return "redirect:/login";
 	}
 	
 /*	@PostMapping("/payment")

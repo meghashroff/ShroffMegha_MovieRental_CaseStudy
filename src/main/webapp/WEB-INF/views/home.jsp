@@ -18,12 +18,13 @@
 </head>
 <body>
    <div class="register">
-   <% 
-   if(session.getAttribute("currentUser")!=null)
+   <%-- <% 
+   User user = (User)request.getAttribute("currentUser");
+   if(user!=null)
    { 
-   		User user =  (User)session.getAttribute("currentUser");
+   		//User user =  (User)session.getAttribute("currentUser");
    %>
-	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println("Welcome "+ user.getFirstName()); %></a>
+	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println(user.getFirstName()); %></a>
 	  	<span>|</span>
 	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
    <% 		
@@ -31,10 +32,11 @@
    else 
    {
    %>
-		<a href="${pageContext.request.contextPath}/SignUp">Sign Up</a>  <span>|</span> <a href="${pageContext.request.contextPath}/LoginPage" id="signIn">Sign In</a>
+		<a href="${pageContext.request.contextPath}/SignUp">Sign Up</a>  <span>|</span> <a href="${pageContext.request.contextPath}/login" id="signIn">Sign In</a>
    <%
    } 
-   %>
+   %> --%>
+   <%@ include file="login_navigation.jsp" %>
    </div>
    <div>
    	<img style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" name="backgroundImg" src= "images/movieBackground.jpg"/> 

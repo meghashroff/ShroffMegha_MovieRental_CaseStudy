@@ -18,9 +18,10 @@
 
 <h1>Transaction Page</h1>
 
-<%   if(session.getAttribute("currentUser")!=null)
+<%  
+User user = (User)request.getAttribute("currentuser");
+if(user!=null)
 	{	 
-		User user =  (User)session.getAttribute("currentUser");
 		%>
 		<h3> <%=user.getFirstName()%></h3>
 		<%
