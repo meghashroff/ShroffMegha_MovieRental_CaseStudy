@@ -6,6 +6,14 @@
     
 }
 
+
+
+div > h4 {
+	text-align: center;
+	margin: auto;	
+	color: red;
+}
+
 #bgMovieList {
     position:fixed;
     top:0px;
@@ -113,7 +121,7 @@ div>a {
     margin-top: 10px;
  /*    margin-left: 80%;
   */   text-transform: capitalize;
-    font-size: x-large;
+    font-size: large;
     color: rgb(17, 16, 16);  
     padding: 20px;  
     /* justify-content: right; */
@@ -127,5 +135,12 @@ div>a {
 
 #rent{
     text-align: center;
+	
+}
+
+.legend{
+	text-align: center;
+	font-size: large;
+	
 	
 }

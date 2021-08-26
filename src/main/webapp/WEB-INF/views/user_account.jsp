@@ -65,7 +65,7 @@
 	%>
 
 
-	
+	  	<a href ="${pageContext.request.contextPath}/changePassword">Change Password</a>
 	<a href="${pageContext.request.contextPath}/deleteAccount">Delete Account</a>  		
 	
 </body>

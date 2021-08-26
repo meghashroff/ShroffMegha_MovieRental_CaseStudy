@@ -35,7 +35,10 @@
    <%
    } 
    %> --%>
+   <%@ include file="navigation.html" %>
+   
    <%@ include file="login_navigation.jsp" %>
+        
    </div>
     <div id="main_container" >
         <img src="images/movieBackground1.jpg" id="bgMovieList">
@@ -55,12 +58,12 @@
             </select> 
         </div>
         <br>
-        <h6></h6>
+        <div><h4></h4></div>
         <div>
             <table name="movieList" id="movieList">
             <thead>
                 <tr class="header">
-                    <th></th>
+                    <th><input type="checkbox" onClick="toggle(this)"></th>
                     <th >Movie</th>
                     <th>Name</th>
                     <th>Genre</th>
@@ -87,6 +90,7 @@
          
         
         </div>
+        <br>
         <div id="rent">
         	<input type="submit" name="submitSelectedMovies" value="Rent Movies" />
        	</div>

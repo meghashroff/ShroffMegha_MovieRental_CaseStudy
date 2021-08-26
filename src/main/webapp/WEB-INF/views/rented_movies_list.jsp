@@ -10,21 +10,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Rented List</title>
+<link rel="stylesheet" type="text/css" href="css/movieList.css" />
 </head>
 <body>
-<h1>Movie List</h1>
-	<div>
-		<a href="${pageContext.request.contextPath}/navToMoviesPage" onclick="return confirm('This will clear all your selections. Are you sure?' )">Back</a></div>
-	     <div>
+	     <div class = register>
     		<%@ include file="navigation.html" %>
+	<a href="${pageContext.request.contextPath}/navToMoviesPage" onclick="return confirm('This will clear all your selections. Are you sure?' )">Back</a></div>
+	
 		</div>
-		<div>
+	
+<!-- <h1>Movie List</h1> -->
+	<div id="movielist_container" >
+    	<div>
 		<form action="${pageContext.request.contextPath}/payment" method="post" >
 	
 	<%-- 	<form action="confirmPayment" method="get" > --%>
 	
 			<fieldset>
-				<legend>Movies Selected List</legend>
+				<legend class="legend">Movies Selected List</legend>
+				<br>
 				<table>
 			 	 	<% 
 						Set<Movie> movies = (HashSet<Movie>)session.getAttribute("selectedMovies");
@@ -44,13 +48,16 @@
 				%>
 	 			</table>
 			</fieldset>
-	<%-- <input type="hidden" name="movieSel" value=<%=selectedMovie.getMovieId() %> />  --%>
+			<br><br>
+			<div id=rent>	<%-- <input type="hidden" name="movieSel" value=<%=selectedMovie.getMovieId() %> />  --%>
 			<input type="submit" value="Confirm" />
 			<%
 			} 
 					else {
 						out.println("No movies selected. ");
 					} %>
+			</div>
+			
 			
 		</form>	
 	</div>

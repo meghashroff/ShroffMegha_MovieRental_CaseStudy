@@ -1,7 +1,13 @@
+function toggle(source) {
+  allCheckboxes = document.getElementsByName('selectedMovies');
+  for(var i=0, n=allCheckboxes.length;i<n;i++) {
+    allCheckboxes[i].checked = source.checked;
+  }
+}
 
 function movieSel(){
 
-	var mes = document.querySelector("h6");
+	var mes = document.querySelector("h4");
 	var checkboxes = document.querySelectorAll("#checkedMovies");
 	for(var i=0;i<checkboxes.length; i++)
 	{
