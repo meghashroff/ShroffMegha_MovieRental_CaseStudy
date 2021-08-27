@@ -42,10 +42,7 @@
    </div>
     <div id="main_container" >
         <img src="images/movieBackground1.jpg" id="bgMovieList">
-        <header>
-        <%@ include file="navigation.html" %>
-        <!-- <div id="homePage"><a href="${pageContext.request.contextPath}/" >Home</a></div>-->
-    	</header>
+       <br>
         <form name="submitMoviesForRent" action="selMovieList" method="get"  onsubmit= "return movieSel()" >
         <div id="genre_container">
         <label for="movieList">Genre</label>
@@ -63,7 +60,7 @@
             <table name="movieList" id="movieList">
             <thead>
                 <tr class="header">
-                    <th><input type="checkbox" onClick="toggle(this)"></th>
+                    <th><!-- <input type="checkbox" onClick="toggle(this)"> --></th>
                     <th >Movie</th>
                     <th>Name</th>
                     <th>Genre</th>

@@ -1,4 +1,4 @@
- <%@page import="java.util.HashSet"%>
+<%@page import="java.util.HashSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import ="org.meghashroff.movierentals.models.Movie" %>
@@ -10,25 +10,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Rented List</title>
-<link rel="stylesheet" type="text/css" href="css/movieList.css" />
-</head>
+<link rel="stylesheet" type="text/css" href="css/display_selection.css" />
+ 
+ 
+ </head>
 <body>
-	     <div class = register>
-    		<%@ include file="navigation.html" %>
-	<a href="${pageContext.request.contextPath}/navToMoviesPage" onclick="return confirm('This will clear all your selections. Are you sure?' )">Back</a></div>
+     <div class = register>
+   		<%@ include file="navigation.html" %>
+	</div>
 	
-		</div>
-	
-<!-- <h1>Movie List</h1> -->
-	<div id="movielist_container" >
+<h1>Movie List</h1>
+	<div class="pageCenter" >
     	<div>
 		<form action="${pageContext.request.contextPath}/payment" method="post" >
 	
 	<%-- 	<form action="confirmPayment" method="get" > --%>
 	
-			<fieldset>
+			<!-- <fieldset>
 				<legend class="legend">Movies Selected List</legend>
-				<br>
+			 -->	<br>
 				<table>
 			 	 	<% 
 						Set<Movie> movies = (HashSet<Movie>)session.getAttribute("selectedMovies");
@@ -46,11 +46,16 @@
 					}
 			 
 				%>
+	
 	 			</table>
-			</fieldset>
-			<br><br>
+			<div>	<a href="${pageContext.request.contextPath}/navToMoviesPage" 
+			onclick="return confirm('This will clear all your selections. Are you sure?' )" >Back</a></div>
+	
+			<!-- </fieldset>
+			 --><br><br>
 			<div id=rent>	<%-- <input type="hidden" name="movieSel" value=<%=selectedMovie.getMovieId() %> />  --%>
-			<input type="submit" value="Confirm" />
+		
+			<input type="submit" value="Confirm" confirmTran/>
 			<%
 			} 
 					else {
@@ -60,6 +65,7 @@
 			
 			
 		</form>	
+	</div>
 	</div>
 		
 </body>

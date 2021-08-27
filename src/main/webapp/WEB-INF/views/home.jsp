@@ -1,4 +1,4 @@
-  <%@ page import ="org.meghashroff.movierentals.models.User" %>
+<%@ page import ="org.meghashroff.movierentals.models.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
