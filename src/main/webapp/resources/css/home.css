@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap'); 
+      
 h1 {
     text-align: center;
     
-    /* font-family: 'Zen Tokyo Zoo', cursive; */
+   font-family: 'Merienda', cursive; color: gold; text-transform: uppercase;
 }
 
 .register{
@@ -15,6 +16,7 @@ div>a {
     text-decoration: none;
     /* color: #555; */
     color: rgb(230, 221, 207);
+	 font-family: 'Kaushan Script', cursive;
 }
 
 footer{
@@ -25,7 +27,7 @@ color: white;
 p{
   color: wheat; 
   font-size: large;
-  font-family: cursive;      
+   font-family: 'Kaushan Script', cursive;
 }
 
 button {
@@ -42,6 +44,12 @@ button>a {
     text-decoration: none;
     font-weight: bold;
     font-style: italic;
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Comic Neue', cursive; 
+    /*  font-family: 'Kaushan Script', cursive;*/
 }
 
+#rent{
+    text-align: center;
+   font-family: 'Comic Neue', cursive; 
+ 	
+}

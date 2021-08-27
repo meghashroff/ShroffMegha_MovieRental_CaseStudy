@@ -7,21 +7,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Account Information</title>
+<link rel = "stylesheet" type="text/css" href="css/tran_complete.css">
+
 </head>
 <body>
-
-<div><a href="${pageContext.request.contextPath}/">Home</a>
-	<span>|</span>
+<div class="register">
+<a href="${pageContext.request.contextPath}/">Home</a>
+</div>
+<br>
+<div class="register">
 	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
 </div>
 
 <h1>Account Information</h1>
-
-
+<div class="tranPage" >
+	<img src="images/movieBackground1.jpg" id="bgMovieList">
+</div>
 <%  
 	User user = (User)request.getAttribute("currentUser");
 	if(user!=null)
 	{		%>
+			
+	
 			<h3 style="text-align: center"> <%=user.getFirstName()%></h3>
 			<table>
 				<thead>
@@ -40,18 +47,18 @@
 				<tr>
 					<td><%=rt.getPaymentDate().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")) %></td>
 					<td>
-					<table>
+					<ul>
 						<%
 				
 						Set<Movie> movieSet = rt.getMovies();
 						for(Movie m : movieSet)
 						{
 						%>
-							<tr> <td><%=m.getMovieName()%></td></tr>
+							<li><%=m.getMovieName()%></li>
 						<%
 						}
 						%>
-						</table>
+						</ul>
 					</td>
 				</tr>
 			</tbody>

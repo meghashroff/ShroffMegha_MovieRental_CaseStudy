@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -100,7 +101,7 @@ public class MovieController {
 		return "movies";
 	}
 	
-	@GetMapping("selMovieList")
+	@PostMapping("selMovieList")
 	public String showMoviesListSelectedForRent(@RequestParam String[] selectedMovies, HttpServletRequest request, HttpSession session) {
 		Set<Movie> movieSet = new HashSet<Movie>();
 		if(selectedMovies!=null){

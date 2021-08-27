@@ -10,7 +10,6 @@
     <link rel = "stylesheet" type="text/css" href="css/home.css">
 <script src="js/login.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
        span {
             color: wheat;
         }
@@ -41,7 +40,7 @@
    <div>
    	<img style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" name="backgroundImg" src= "images/movieBackground.jpg"/> 
     </div>
-	<h1 style="font-family: 'Merienda', cursive; color: gold; text-transform: uppercase;" >All the movies in one place! </h1>
+	<h1 >All the movies in one place! </h1>
    
     <section id="about">
     <div class="about_container">
@@ -59,8 +58,12 @@
         
         <br />
     </div>
-    <button><a href="${pageContext.request.contextPath}/Movies">View Movies</a></button>
     
+    <form action ="${pageContext.request.contextPath}/Movies" method="get">
+     <div id="rent">
+    <input type="submit" value="View Movies">
+    </div>
+    </form>
 	</section>
 </body>
 </html>

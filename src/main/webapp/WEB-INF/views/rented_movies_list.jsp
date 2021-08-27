@@ -11,29 +11,30 @@
 <meta charset="ISO-8859-1">
 <title>Rented List</title>
 <link rel="stylesheet" type="text/css" href="css/display_selection.css" />
- 
- 
- </head>
+</head>
 <body>
-     <div class = register>
-   		<%@ include file="navigation.html" %>
+    <div class = register>
+  		<%@ include file="navigation.html" %>
 	</div>
-	
+	<br>
+	<div class = register>
+<a href="${pageContext.request.contextPath}/logout">Logout</a>  
+</div>
 <h1>Movie List</h1>
+<br>
 	<div class="pageCenter" >
+		<img src="images/movieBackground2.jpg" id="bgMovieList">
     	<div>
-		<form action="${pageContext.request.contextPath}/payment" method="post" >
-	
+			<form action="${pageContext.request.contextPath}/payment" method="post" >
 	<%-- 	<form action="confirmPayment" method="get" > --%>
-	
-			<!-- <fieldset>
-				<legend class="legend">Movies Selected List</legend>
-			 -->	<br>
+			<fieldset style"margin: auto;">
+				<!-- <legend class="legend">Movies Selected List</legend> -->
+			 	<br>
 				<table>
 			 	 	<% 
-						Set<Movie> movies = (HashSet<Movie>)session.getAttribute("selectedMovies");
+					Set<Movie> movies = (HashSet<Movie>)session.getAttribute("selectedMovies");
 					if(!movies.isEmpty()){	
-			 	 	for(Movie selectedMovie: movies){
+			 	 		for(Movie selectedMovie: movies){
 					%> 
 					<tbody>
  						<tr>
@@ -51,16 +52,16 @@
 			<div>	<a href="${pageContext.request.contextPath}/navToMoviesPage" 
 			onclick="return confirm('This will clear all your selections. Are you sure?' )" >Back</a></div>
 	
-			<!-- </fieldset>
-			 --><br><br>
+			 </fieldset>
+			<br><br>
 			<div id=rent>	<%-- <input type="hidden" name="movieSel" value=<%=selectedMovie.getMovieId() %> />  --%>
-		
-			<input type="submit" value="Confirm" confirmTran/>
+					<input type="submit" value="Confirm" />
 			<%
 			} 
 					else {
 						out.println("No movies selected. ");
-					} %>
+					} 
+			%>
 			</div>
 			
 			

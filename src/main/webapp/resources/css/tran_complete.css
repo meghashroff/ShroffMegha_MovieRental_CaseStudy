@@ -1,58 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+
+div>a {
+     
+    text-align: right;          
+    margin-top: 10px;
+    margin-left: 80%;
+    text-transform: capitalize;
+    font-size: large;
+    color: tan;  
+     padding: 20px;  
+    /* justify-content: right; */
+    font-family: 'Kaushan Script', cursive;
+   text-decoration: none;
+}
+
 h1 {
              
-    margin-top: 30px;
+    margin-top: 40px;
     text-align: center;  
     text-transform: uppercase;
     font-size: xx-large;
-    color: #00000028539;  
+    /* color: white; */
+    /* color: rgb(235, 62, 76);   */
+    /* color:rgb(114, 84, 245) , white, red; */
+    color: black;
     padding: 20px; 
 }
 
-thead tr th {
- /* background-color: rgb(75, 73, 73); */
+
+.tranPage{
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px black; /* Added red border to see the div better */
+	
+	max-width: 900px; 
+}
+
+/* thead tr th {
+ background-color: rgb(75, 73, 73);
     font-size: 30px;
 }
 td, th {
-    /* color: white; */
+    color: white;
     font-size: 20px;
     border:  1;
     border-color:rgb(241, 235, 235);
     
 
-    /* border-right-style: dotted; */
+    border-right-style: dotted;
     border-width: 1px;
     border-bottom-style: groove;
-    /* border-style: ; */
+    border-style: ;
     border-color: 555;
     padding : 150,0,0,150;
     margin: 150,10,10,150;
     background-color: rgba(240, 233, 233, 0.747);
     font-family: 'Kaushan Script', cursive;
 }
-
+ */
 table{
     width: 75%;
     margin-left: 15%;
     text-align: left;
-    border: 5px double black;
-    border-collapse: collapse;
+    border: 2px black;
+    /* border-collapse: collapse; */
   }
 
 
-body  {  
-    margin: 0;  
-    padding: 0;  
-    background-color: #dde3e3;  
-    font-family: 'Shadows Into Light', cursive;
-}  
 
-div>a {
-    text-decoration: none;
-    /* color: #555; */
-    color: #565656230221207;
+img {
+    width: 100%;
+    filter: blur(2px);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-.navLinks{
+#rent{
+    text-align: center;
+	
+}
+
+.register{
     text-align: right;
 }
-    
+.legend{
+	text-align: center;
+	font-size: large;
+	
+	
+}

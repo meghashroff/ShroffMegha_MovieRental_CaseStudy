@@ -6,17 +6,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
  <link rel = "stylesheet" type="text/css" href="css/login.css">
-   
+   <script src="js/login.js"></script>
 </head>
 <body>
-	<div>
+<%-- 	<div>
 	<a href="${pageContext.request.contextPath}/navToLoginPage">Back</a></div>
-    
+     --%>
     <div><a href="${pageContext.request.contextPath}/">Home</a></div>
     <h1>Change Password</h1>
 
 <div class="changePwd_container">
-<form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post">
+<img src = "images/allMovies.jpg" >
+<form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post" onsubmit="return validateUserCredentials()">
         <!-- <div>
 			<label for="email">Username</label><br>
 	        <input type="email" name = "email" id="email" placeholder="Please enter your email id"/>
@@ -47,6 +48,8 @@
         <div>
             <input type="submit" id="changePwd" value = "Change Password" />    
         </div>
+        <h2></h2>
+        	
 </form>    
 </div>
 </body>

@@ -43,7 +43,7 @@
     <div id="main_container" >
         <img src="images/movieBackground1.jpg" id="bgMovieList">
        <br>
-        <form name="submitMoviesForRent" action="selMovieList" method="get"  onsubmit= "return movieSel()" >
+        <form name="submitMoviesForRent" action="selMovieList" method="post"  onsubmit= "return movieSel()" >
         <div id="genre_container">
         <label for="movieList">Genre</label>
         <br>
