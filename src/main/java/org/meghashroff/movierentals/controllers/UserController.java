@@ -118,22 +118,23 @@ public class UserController {
 		User user = null;
 		try {
 			user = userService.findByUsername(username);
+		    if (passwordEncoder.matches(password, user.getPassword())) {
+				user.setPassword(passwordEncoder.encode(newPassword));
+	
+	//			user.setPassword(newPassword);
+				userService.createOrUpdateUser(user);
+				System.out.println("Updated user info  "+user.getPassword());
+		    } else {
+		    	System.out.println("Old password is incorrect: "+user);
+		    	return "change_password";
+			    
+		    }
 		} catch (UserNotFoundException e) {
 			System.out.println("User not found" + e.getMessage());
-		} 
-		if (passwordEncoder.matches(password, user.getPassword())) {
-			user.setPassword(passwordEncoder.encode(newPassword));
-
-//			user.setPassword(newPassword);
-			userService.createOrUpdateUser(user);
-			System.out.println("Updated user info  "+user.getPassword());
-			
-			return "login_page";	
-		} else {
-			System.out.println("Old password is incorrect: "+user);
 			return "change_password";
-		}
-		
+		    
+		} 
+		return "login_page";	
 		
 	}
 	

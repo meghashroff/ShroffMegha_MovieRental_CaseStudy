@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
+ <meta charset="UTF-8">
 <title>Insert title here</title>
  <link rel = "stylesheet" type="text/css" href="css/login.css">
-   <script src="js/login.js"></script>
+ <script src="js/login.js"></script>
 </head>
 <body>
 <%-- 	<div>
@@ -17,7 +17,7 @@
 
 <div class="changePwd_container">
 <img src = "images/allMovies.jpg" >
-<form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post" onsubmit="return validateUserCredentials()">
+<form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post" onsubmit="return validateUserCredentials()" >
         <!-- <div>
 			<label for="email">Username</label><br>
 	        <input type="email" name = "email" id="email" placeholder="Please enter your email id"/>
@@ -48,9 +48,10 @@
         <div>
             <input type="submit" id="changePwd" value = "Change Password" />    
         </div>
-        <h2></h2>
         	
-</form>    
+</form> 
+<h2></h2>
+           
 </div>
 </body>
 </html>

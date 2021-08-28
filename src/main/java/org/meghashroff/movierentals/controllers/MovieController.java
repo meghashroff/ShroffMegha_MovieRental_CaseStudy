@@ -87,7 +87,7 @@ public class MovieController {
 	}
 	
 		
-	@GetMapping("remove/{movieId}")
+	@GetMapping("/selMovieList/remove/{movieId}")
 	public String removeFromList(@PathVariable("movieId") int movieId, HttpSession session) {
 		Set<Movie> movieSet = (Set<Movie>)session.getAttribute("selectedMovies");
 		movieSet.remove(movieService.findByMovieId(movieId));
@@ -97,6 +97,19 @@ public class MovieController {
 
 	@GetMapping("/navToMoviesPage")
 	public String showBackToMovePage(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(!principal.equals("anonymousUser"))
+		{
+			UserDetails userDetails = (UserDetails)principal;
+			User user= null;
+			try {
+				user = userService.findByUsername(userDetails.getUsername());
+			} catch (UserNotFoundException e) {
+				System.out.println("User not found" + e.getMessage());
+			}
+			if(user!=null)		
+				model.addAttribute("currentUser", user);
+		}
 		model.addAttribute("movies", movieService.findAllMovies());
 		return "movies";
 	}

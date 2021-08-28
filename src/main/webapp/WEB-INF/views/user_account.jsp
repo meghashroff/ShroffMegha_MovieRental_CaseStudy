@@ -19,7 +19,6 @@
 	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
 </div>
 
-<h1>Account Information</h1>
 <div class="tranPage" >
 	<img src="images/movieBackground1.jpg" id="bgMovieList">
 </div>
@@ -29,8 +28,8 @@
 	{		%>
 			
 	
-			<h3 style="text-align: center"> <%=user.getFirstName()%></h3>
-			<table>
+			<h1 style="text-align: center"> <%=user.getFirstName()%>'s Rental History</h1>
+			<table id="transHistory">
 				<thead>
 					<tr>
 						<th>Date</th>
@@ -71,9 +70,9 @@
 	}
 	%>
 
-
-	  	<a href ="${pageContext.request.contextPath}/changePassword">Change Password</a>
-	<a href="${pageContext.request.contextPath}/deleteAccount">Delete Account</a>  		
+<br>
+	  	<a href ="${pageContext.request.contextPath}/changePassword" class="optionLinks">Change Password</a>
+	<a href="${pageContext.request.contextPath}/deleteAccount" class="optionLinks">Delete Account</a>  		
 	
 </body>
 </html>

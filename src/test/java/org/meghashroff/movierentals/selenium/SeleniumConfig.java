@@ -18,10 +18,7 @@ public class SeleniumConfig {
 	
 	@Bean
 	public WebDriver getWebDriver(Environment env) {
-//		System.setProperty("webdriver.chrome.driver", env.getProperty("selenium.path"));
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\rites\\OneDrive\\Documents\\Megha\\selenium\\chromedriver.exe"); // "[folder]\\chromedriver.exe"
-//		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe"); // "[folder]\\chromedriver.exe"
-		
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}

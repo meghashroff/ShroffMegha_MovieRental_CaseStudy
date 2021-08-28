@@ -88,7 +88,7 @@
         </div>
         <br>
         <div>
-		<a href="${pageContext.request.contextPath}/LoginPage" id="signIn" style="margin: 30px;">Already registered, login here</a>
+		<a href="${pageContext.request.contextPath}/login" id="signIn" style="margin: 30px;">Already registered, login here</a>
 		</div> <h2></h2>
 		</form:form>
            

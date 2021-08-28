@@ -39,23 +39,9 @@ class SeleniumTests {
 //	}
 //	
 	@Test
-	void testLogin() throws InterruptedException {
+	void testHomePage() throws InterruptedException {
 		driver.get("http://localhost:8080/movierentals");
-		
-//		WebElement usernameInput = driver.findElement(By.cssSelector("body > h1"));
-//		usernameInput.sendKeys("ALL THE MOVIES IN ONE PLACE");
-		
-//		WebElement passwordInput = driver.findElement(By.cssSelector("body > form > div:nth-child(2) > input[type=text]"));
-//		passwordInput.sendKeys("john1234");
-//	
-//		Thread.sleep(3000);
-//		
-//		driver.findElement(By.cssSelector("body > h1"));
-//		WebElement welcomeMessage = driver.findElement(By.cssSelector("body > h2"));
-//		
-//		Thread.sleep(3000);
-//		assertEquals("Home Page", driver.getTitle());
-//		assertTrue(welcomeMessage.getText().contains("ALL THE MOVIES IN ONE PLACE"));
+		assertEquals("Home Page", driver.getTitle());
 
 	}
 }

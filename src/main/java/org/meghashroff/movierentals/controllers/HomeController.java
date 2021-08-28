@@ -20,6 +20,10 @@ private UserService userService;
 		this.userService = userService;
 	}
 	
+	/*
+	 * This method shows the home page of the application
+	 * 
+	 * */
 	@GetMapping("/")
 	public String showHomePage(Model model) {
 //		 Get current user
@@ -31,8 +35,7 @@ private UserService userService;
 			try {
 				user = userService.findByUsername(userDetails.getUsername());
 			} catch (UserNotFoundException e) {
-				System.out.println("User not found" + e.getMessage());
-//				e.printStackTrace();
+				System.out.println("User not found: " + e.getMessage());
 			}
 			System.out.println("User: "+user);
 			if(user!=null)		
