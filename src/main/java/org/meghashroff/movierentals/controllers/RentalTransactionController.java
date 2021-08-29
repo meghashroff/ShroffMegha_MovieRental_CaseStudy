@@ -11,64 +11,52 @@ import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.Movie;
 import org.meghashroff.movierentals.models.RentalTransaction;
 import org.meghashroff.movierentals.models.User;
-import org.meghashroff.movierentals.services.MovieService;
 import org.meghashroff.movierentals.services.RentalTransactionService;
 import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RentalTransactionController {
 
-	private MovieService movieService;
 	private UserService userService;
 	private RentalTransactionService rentalTransactionService;
 
 	@Autowired
-	public RentalTransactionController(MovieService movieService, UserService userService, RentalTransactionService rentalTransactionService) {
-		this.movieService = movieService;
+	public RentalTransactionController(UserService userService, RentalTransactionService rentalTransactionService) {
 		this.userService = userService;
 		this.rentalTransactionService = rentalTransactionService;
 	}
 
 	
-	@GetMapping("/confirmPayment")
-	public String showPaymentPage(@RequestParam("movieSel") Integer movieSel, Model model, HttpSession session) {
-		model.addAttribute("movie", movieService.findByMovieId(movieSel));
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		User user = null;
-		try {
-			user = userService.findByUsername(userDetails.getUsername());
-		} catch (UserNotFoundException e) {
-			System.out.println("User not found" + e.getMessage());
-		}
-		if(user != null) {
-			return "payment";
-		}
-		return "login_page";
-	}
+//	@GetMapping("/confirmPayment")
+//	public String showPaymentPage(@RequestParam("movieSel") Integer movieSel, Model model, HttpSession session) {
+//		model.addAttribute("movie", movieService.findByMovieId(movieSel));
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		UserDetails userDetails = (UserDetails)principal;
+//		User user = null;
+//		try {
+//			user = userService.findByUsername(userDetails.getUsername());
+//			if(user != null) {
+//				return "payment";
+//			}
+//		
+//		} catch (UserNotFoundException e) {
+//			System.out.println("User not found" + e.getMessage());
+//		}
+//		return "login_page";
+//	}
 	
-
+	/*
+	 * This method displays the current completed transaction 
+	 * 
+	 * 	
+	 * */
 	@PostMapping("/payment")
 	public String completeTransaction(HttpSession session, HttpServletRequest request, Model model) throws UserNotFoundException {
-		//User user = (User) session.getAttribute("currentUser");
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		User user = null;
-		try {
-			user = userService.findByUsername(userDetails.getUsername());
-		} catch (UserNotFoundException e) {
-			System.out.println("User not found");
-		throw new UserNotFoundException("User not found ");
-		}
-		System.out.println("User: "+user);
+		User user = userService.getCurrentUserInSession();
 		if(user!=null) {
 			Set<Movie> movieSet = (HashSet<Movie>)session.getAttribute("selectedMovies");
 			RentalTransaction rental = new RentalTransaction();
@@ -81,8 +69,7 @@ public class RentalTransactionController {
 			request.setAttribute("currentTransaction", rental);
 			User savedUser = userService.createOrUpdateUser(user);
 			model.addAttribute("currentuser", savedUser);
-//		return "redirect:/";
-		return "display_transaction_complete";
+			return "display_transaction_complete";
 		}
 		return "redirect:/login";
 	}

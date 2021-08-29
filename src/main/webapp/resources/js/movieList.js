@@ -1,3 +1,9 @@
+function selectedGenre(value){
+	var genre = document.getElementById("genre");
+	alert(value);
+}
+
+
 function toggle(source) {
   allCheckboxes = document.getElementsByName('selectedMovies');
   for(var i=0, n=allCheckboxes.length;i<n;i++) {
@@ -35,7 +41,7 @@ function filterByGenre(value){
     //     } 
     // }
 
-	
+	alert(value);
     let list = document.getElementsByTagName('tr');
     let originalList = list;
     let trList = setOriginalList(originalList);

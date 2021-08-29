@@ -9,20 +9,12 @@
  <script src="js/login.js"></script>
 </head>
 <body>
-<%-- 	<div>
-	<a href="${pageContext.request.contextPath}/navToLoginPage">Back</a></div>
-     --%>
     <div><a href="${pageContext.request.contextPath}/">Home</a></div>
     <h1>Change Password</h1>
 
 <div class="changePwd_container">
-<img src = "images/allMovies.jpg" >
+<img src = "images/allMovies.jpg" alt="">
 <form name="changePasswordForm" action ="${pageContext.request.contextPath}/updatePassword" method="post" onsubmit="return validateUserCredentials()" >
-        <!-- <div>
-			<label for="email">Username</label><br>
-	        <input type="email" name = "email" id="email" placeholder="Please enter your email id"/>
-        </div> 
-         -->
          
          <div>
 			<label for="username">Username</label><br>

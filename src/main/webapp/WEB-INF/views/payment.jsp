@@ -1,4 +1,4 @@
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import ="org.meghashroff.movierentals.models.Movie" %>
 <!DOCTYPE html>
 <html lang="en">

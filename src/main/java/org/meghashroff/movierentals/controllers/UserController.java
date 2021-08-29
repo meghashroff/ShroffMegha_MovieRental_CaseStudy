@@ -7,8 +7,6 @@ import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.User;
 import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -113,29 +111,22 @@ public class UserController {
 		System.out.println("Username: "+username);
 		System.out.println("OldPassword "+password);
 		System.out.println("NewPassword "+newPassword);
-//		User user = userService.findByUserEmailAndPassword(userEmail,password);
-//		User user = userService.findByEmail(userEmail);
 		User user = null;
 		try {
 			user = userService.findByUsername(username);
 		    if (passwordEncoder.matches(password, user.getPassword())) {
 				user.setPassword(passwordEncoder.encode(newPassword));
-	
-	//			user.setPassword(newPassword);
 				userService.createOrUpdateUser(user);
 				System.out.println("Updated user info  "+user.getPassword());
 		    } else {
 		    	System.out.println("Old password is incorrect: "+user);
 		    	return "change_password";
-			    
 		    }
 		} catch (UserNotFoundException e) {
 			System.out.println("User not found" + e.getMessage());
 			return "change_password";
-		    
 		} 
 		return "login_page";	
-		
 	}
 	
 	@GetMapping("/navToLoginPage")
@@ -145,14 +136,7 @@ public class UserController {
 	
 	@GetMapping("/accountInfo")
 	public String showUserAccountInfo(Model model) {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		User user = null;
-		try {
-			user = userService.findByUsername(userDetails.getUsername());
-		} catch (UserNotFoundException e) {
-			System.out.println("User not found" + e.getMessage());
-		}
+		User user = userService.getCurrentUserInSession();
 		model.addAttribute("currentUser", user);
 		System.out.println("In show user account method");
 		
@@ -162,15 +146,7 @@ public class UserController {
 	@GetMapping("/deleteAccount")
 	public String deleteUserAccount(HttpSession session) {
 		System.out.println("In delete user account method");
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		User user = null;
-		try {
-			user = userService.findByUsername(userDetails.getUsername());
-		} catch (UserNotFoundException e) {
-			System.out.println("User not found" + e.getMessage());
-		}
-//User delUser  = userService.findByUserId(user.getUserId());
+		User user = userService.getCurrentUserInSession();
 		userService.deleteUserAccountById(user.getUserId());
 		session.removeAttribute("currentUser");
 		return "redirect:/";

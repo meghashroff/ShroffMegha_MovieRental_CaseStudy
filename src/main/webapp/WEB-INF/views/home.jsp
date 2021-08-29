@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel = "stylesheet" type="text/css" href="css/home.css">
-<script src="js/login.js"></script>
+	<script src="js/login.js"></script>
     <style>
        span {
             color: wheat;
@@ -16,32 +16,13 @@
     </style>
 </head>
 <body>
-   <div class="register">
-   <%-- <% 
-   User user = (User)request.getAttribute("currentUser");
-   if(user!=null)
-   { 
-   		//User user =  (User)session.getAttribute("currentUser");
-   %>
-	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println(user.getFirstName()); %></a>
-	  	<span>|</span>
-	  	<a href="${pageContext.request.contextPath}/logout">Logout</a>  
-   <% 		
-   } 
-   else 
-   {
-   %>
-		<a href="${pageContext.request.contextPath}/SignUp">Sign Up</a>  <span>|</span> <a href="${pageContext.request.contextPath}/login" id="signIn">Sign In</a>
-   <%
-   } 
-   %> --%>
-   <%@ include file="login_navigation.jsp" %>
-   </div>
-   <div>
-   	<img style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" name="backgroundImg" src= "images/movieBackground.jpg"/> 
-    </div>
+	<div class="register">
+   		<%@ include file="login_navigation.jsp" %>
+	</div>
+	<div>
+   		<img style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" name="backgroundImg" src= "images/movieBackground.jpg" alt=""/> 
+	</div>
 	<h1 >All the movies in one place! </h1>
-   
     <section id="about">
     <div class="about_container">
         <p>
@@ -55,14 +36,12 @@
             Aliquam laoreet laoreet eros non mattis. In ut vestibulum dolor. Phasellus dignissim aliquam leo, eu efficitur enim convallis eget.
             Donec pharetra ex non nulla tempus scelerisque. Sed lobortis egestas aliquet. Sed suscipit ex in nunc congue, a dignissim massa congue.
         </p>
-        
         <br />
     </div>
-    
     <form action ="${pageContext.request.contextPath}/Movies" method="get">
-     <div id="rent">
-    <input type="submit" value="View Movies">
-    </div>
+		<div id="rent">
+    		<input type="submit" value="View Movies">
+    	</div>
     </form>
 	</section>
 </body>

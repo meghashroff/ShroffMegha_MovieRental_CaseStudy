@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		.authorizeRequests()
 		// Permit all users to access the register page and register post method
-		.antMatchers("/","/login", "/SignUp", "/createUser","/changePassword","/updatePassword","/Movies","/MovieInfo/{movieId}").permitAll()
+		.antMatchers("/","/login", "/SignUp", "/createUser","/changePassword","/updatePassword","/Movies","/MovieInfo/{movieId}","/selGenre").permitAll()
 		// Restrict Admin page to "ADMIN" roles
 		.antMatchers("/admin").hasRole("ADMIN")
 		.anyRequest().authenticated()

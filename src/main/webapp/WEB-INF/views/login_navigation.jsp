@@ -5,7 +5,6 @@
    User user = (User)request.getAttribute("currentUser");
    if(user!=null)
    { 
-   		//User user =  (User)session.getAttribute("currentUser");
    %>
 	    <a href="${pageContext.request.contextPath}/accountInfo	"><% out.println(user.getFirstName()); %></a>
 	  	<span>|</span>

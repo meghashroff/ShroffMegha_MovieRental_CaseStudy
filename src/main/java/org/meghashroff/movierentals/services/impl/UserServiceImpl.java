@@ -10,6 +10,8 @@ import javax.persistence.EntityNotFoundException;
 import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,15 +31,6 @@ public class UserServiceImpl implements UserService{
 		return userRepository.save(user);
 	}
 
-//	@Override
-//	public User findByEmail(String email) {
-//		return userRepository.findByEmail(email);
-//	}
-
-//	@Override
-//	public User findByUserId(Integer userId) {
-//		return userRepository.findByUserId(userId);
-//	}
 	
 	@Override
 	public User findByUserId(Integer id)  { 
@@ -46,18 +39,7 @@ public class UserServiceImpl implements UserService{
 			return optUser.get();
 		}
 		throw new EntityNotFoundException();
-//		throw new UserNotFoundException();
 	}
-
-//	@Override
-//	public User updateUser(User user) {
-//		return userRepository.save(user);
-//	}
-
-//	@Override
-//	public User findByUserEmailAndPassword(String email, String password) {
-//		return userRepository.findByEmailAndPassword(email, password);
-//	}
 
 	@Override
 	public void deleteUserAccountById(Integer userId) {
@@ -71,6 +53,17 @@ public class UserServiceImpl implements UserService{
 			if(foundUser !=null)
 				return foundUser;
 			throw new UserNotFoundException("User not found");
+	}
+	
+	public User getCurrentUserInSession() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user=null;
+		if(!principal.equals("anonymousUser"))
+		{
+			UserDetails userDetails = (UserDetails)principal;
+			user = userRepository.findByUsername(userDetails.getUsername());
+		}
+		return user;
 	}
 
 }
