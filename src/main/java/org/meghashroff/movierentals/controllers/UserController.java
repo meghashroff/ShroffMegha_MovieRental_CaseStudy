@@ -30,17 +30,20 @@ public class UserController {
 		this.passwordEncoder = passwordEncoder;
 	}
 
+	/* This method shows the sign up page */
 	@GetMapping("/SignUp")
 	public String showSignUpPage(Model model) {
 		model.addAttribute("user", new User());
 		return "sign_up";
 	}
 	
+	/* This method shows the login page */
 	@GetMapping("/login")
 	public String showLoginPage(Model model) {
 		return "login_page";
 	}
 
+	/* This method creates the new user */
 	@PostMapping("/createUser")
 	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
 	
@@ -88,17 +91,20 @@ public class UserController {
 //	}
 //	
 
+	/* This method removed the current user from the session */
 	@GetMapping("/logout")
 	public String logoutPage(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 
+	/* This method shows the change password page */
 	@GetMapping("/changePassword")
 	public String showChangePassword() {
 		return "change_password";
 	}
 	
+	/* This method updates the password of the particular user */
 	@PostMapping("/updatePassword")
 	public String showUpdatePassword(@RequestParam("username") String username, 
 			@RequestParam("oldPassword") String password, @RequestParam("newPassword") String newPassword ) {
@@ -126,11 +132,13 @@ public class UserController {
 		}
 	} 
 			
+	/* This method navigates back to login page */
 	@GetMapping("/navToLoginPage")
 	public String showBackToLoginPage() {
 		return "login_page";
 	}
 	
+	/* This method shows the user account page */
 	@GetMapping("/accountInfo")
 	public String showUserAccountInfo(Model model) {
 		User user = userService.getCurrentUserInSession();
@@ -138,6 +146,7 @@ public class UserController {
 		return "user_account";
 	}
 	
+	/* This method deletes the user account */
 	@GetMapping("/deleteAccount")
 	public String deleteUserAccount(HttpSession session) {
 		User user = userService.getCurrentUserInSession();
