@@ -15,6 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+/*
+ * This class provides the implementation for the methods of UserService
+ * */
 @Service
 public class UserServiceImpl implements UserService{
 

@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+ * This class provides the implementation for the methods of MovieService 
+ * */
 @Service
 public class MovieServiceImpl implements MovieService {
 

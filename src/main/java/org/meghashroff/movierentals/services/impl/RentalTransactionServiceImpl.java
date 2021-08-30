@@ -10,6 +10,9 @@ import org.meghashroff.movierentals.services.RentalTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/*
+ * This class provides the implementation for the methods of RentalTransactionService
+ * */
 @Service
 public class RentalTransactionServiceImpl implements RentalTransactionService{
 

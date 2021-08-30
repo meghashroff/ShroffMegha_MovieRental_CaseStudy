@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	/* Custom query to retrieve user by username */
 	public User findByUsername(String username);
 }

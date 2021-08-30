@@ -6,6 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/*
+ * This class is the HomeController. 
+ * This class contains the handler showing the home page
+ * 
+ * */
 @Controller
 @ControllerAdvice
 public class HomeController {

@@ -18,6 +18,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/*
+ * This is the controller for the rental transaction.
+ * It contains the handler to create the rental transaction for the user 
+ * */
 @Controller
 public class RentalTransactionController {
 

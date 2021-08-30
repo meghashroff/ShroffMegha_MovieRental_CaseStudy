@@ -29,7 +29,7 @@
         	Missing out on movies? Want to watch at the comfort of your own home?
         </p>
         <p style="font-size: xx-large;">
-            Movie Rentals offers offers a wide selection of movies to select from so that you can watch movies in your own home, at your own time. 
+            Movie Rentals offers a wide selection of movies to select from so that you can watch movies in your own home, at your own time. 
             We give you the best way to discover new content, completely free.
 		</p>
 	    <br />
