@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.User;
 import org.meghashroff.movierentals.repositories.UserRepository;
-import org.meghashroff.movierentals.services.UserService;
 import org.meghashroff.movierentals.services.impl.UserServiceImpl;
 import org.mockito.Mockito;
 

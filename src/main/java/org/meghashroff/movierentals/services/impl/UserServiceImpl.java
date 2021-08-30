@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.meghashroff.movierentals.exceptions.UserAlreadyExists;
 import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,10 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public User createOrUpdateUser(User user) {
+	public User createUser(User user) throws UserAlreadyExists{
+		User existingUser= userRepository.findByUsername(user.getUsername());
+		if(existingUser!=null)
+			throw new UserAlreadyExists();
 		return userRepository.save(user);
 	}
 
@@ -47,12 +51,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findByUsername(String username) throws UserNotFoundException {
-
+	public User findByUsername(String username) {
 			User foundUser = userRepository.findByUsername(username);
-			if(foundUser !=null)
-				return foundUser;
-			throw new UserNotFoundException("User not found");
+			return foundUser;
 	}
 	
 	public User getCurrentUserInSession() {
@@ -64,6 +65,14 @@ public class UserServiceImpl implements UserService{
 			user = userRepository.findByUsername(userDetails.getUsername());
 		}
 		return user;
+	}
+
+	@Override
+	public User updateUser(User user) throws UserNotFoundException {
+		User existingUser= userRepository.findByUsername(user.getUsername());
+		if(existingUser==null)
+			throw new UserNotFoundException();
+		return userRepository.save(user);
 	}
 
 }

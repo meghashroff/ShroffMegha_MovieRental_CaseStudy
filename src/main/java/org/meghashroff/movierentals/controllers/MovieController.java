@@ -77,7 +77,6 @@ public class MovieController {
 	public String removeFromList(@PathVariable("movieId") int movieId, HttpSession session) {
 		Set<Movie> movieSet = (Set<Movie>)session.getAttribute("selectedMovies");
 		movieSet.remove(movieService.findByMovieId(movieId));
-		System.out.println("movieSet: "+movieSet);
 		return "rented_movies_list";
 	}
 
@@ -91,8 +90,7 @@ public class MovieController {
 		Set<Movie> movieSet = new HashSet<Movie>();
 		if(selectedMovies!=null){
 			for(int i=0;i<selectedMovies.length;i++) {
-				System.out.println(movieService.findByMovieId(Integer.parseInt(selectedMovies[i])));
-			movieSet.add(movieService.findByMovieId(Integer.parseInt(selectedMovies[i])));
+				movieSet.add(movieService.findByMovieId(Integer.parseInt(selectedMovies[i])));
 			}
 		}
 		session.setAttribute("selectedMovies", movieSet);
@@ -105,7 +103,6 @@ public class MovieController {
 	 * */
 	@PostMapping("/selGenre")
 	public String showMovieListByGenre(@RequestParam("movieGenre") String movieGenre, Model model) {
-		System.out.println("In genre method: "+movieGenre);
 		User user = userService.getCurrentUserInSession();
 		if(user!=null)		
 				model.addAttribute("currentUser", user);

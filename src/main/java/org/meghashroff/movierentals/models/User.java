@@ -23,18 +23,16 @@ public class User {
 	private Integer userId;
 	
 	@Column(name = "firstName", nullable=false, length=255)
-	@NotEmpty (message = "Name cant be empty.")
-//	@Size(min=1, message = "Please enter your first name")
+	@NotEmpty (message = "Name cant be empty")
 	private String firstName;
 	
 	private String lastName;
 	
 	@Column(name = "username", nullable=false, length=255, unique=true)
-	@NotEmpty (message = "Username cant be empty.")
+	@NotEmpty (message = "Username cant be empty")
 	private String username;
 	
 	@Column(name = "email", nullable=false, length=255)
-//	@NotEmpty(message="Email cant be empty")
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", message = "Invalid email")
 	private String email;
 
@@ -52,16 +50,6 @@ public class User {
 		this.rentalTrans = new ArrayList<>();
 	}
 	
-//	public User(String firstName, String lastName, String email, String password, String phoneNo,
-//			List<RentalTransaction> rentalTrans) {
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.password = password;
-//		this.phoneNo = phoneNo;
-//		this.rentalTrans = rentalTrans;
-//	}
-
 	public User(String firstName, String lastName, String username, String email, String password, String phoneNo)	{
 		this();
 		this.firstName = firstName;
@@ -72,17 +60,6 @@ public class User {
 		this.phoneNo = phoneNo;
 	}
 
-//	public User(Integer userId, String firstName, String lastName, String email, String password, String phoneNo,
-//			List<RentalTransaction> rentalTrans) {
-//		this.userId = userId;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.password = password;
-//		this.phoneNo = phoneNo;
-//		this.rentalTrans = rentalTrans;
-//	}
-	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -157,9 +134,10 @@ public class User {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phoneNo == null) ? 0 : phoneNo.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -198,6 +176,11 @@ public class User {
 			if (other.userId != null)
 				return false;
 		} else if (!userId.equals(other.userId))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}

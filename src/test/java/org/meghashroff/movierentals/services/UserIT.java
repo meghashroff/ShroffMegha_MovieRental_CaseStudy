@@ -6,13 +6,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.meghashroff.movierentals.config.WebAppConfig;
+import org.meghashroff.movierentals.exceptions.UserAlreadyExists;
 import org.meghashroff.movierentals.exceptions.UserNotFoundException;
 import org.meghashroff.movierentals.models.Movie;
 import org.meghashroff.movierentals.models.RentalTransaction;
 import org.meghashroff.movierentals.models.User;
-import org.meghashroff.movierentals.services.MovieService;
-import org.meghashroff.movierentals.services.RentalTransactionService;
-import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -51,6 +49,7 @@ public class UserIT {
 	private Movie movie1;
 	private Movie movie2;
 	private User user;
+//	private User testUser;
 	
 	@Autowired
 	public UserIT(RentalTransactionService rentalTransactionService, 
@@ -60,9 +59,18 @@ public class UserIT {
 		this.movieService= movieService;
 	}
 	
+//	@Test
+//	void testCreateUser() throws UserAlreadyExists {
+//		testUser = new User("ME","Sh","meg","meg@email.com","test1234","2345678901");
+//		User expected = userService.createUser(testUser);
+//		User actual = userService.findByUsername(testUser.getUsername());
+//		assertEquals(expected,actual);
+//	}
+	
+	
 	
 	@BeforeAll
-	void setupAll() {
+	void setupAll() throws UserAlreadyExists {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 		user = new User("TestFirstName","TestLastName","test","test@email.com","test1234","2345678901");
@@ -82,7 +90,7 @@ public class UserIT {
 		List<RentalTransaction> trans = new ArrayList<RentalTransaction>();
 		trans.add(rentalTransaction);
 		user.setRentalTrans(trans);
-		userService.createOrUpdateUser(user);
+		userService.createUser(user);
 	}
 	
 	
@@ -94,7 +102,7 @@ public class UserIT {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"Name cant be empty.", "Password cant be empty", "Username cant be empty.","Should be 10 digits","Invalid email"})
+	@ValueSource(strings = {"Name cant be empty", "Password cant be empty", "Username cant be empty","Should be 10 digits","Invalid email"})
 	public void testUserInputsNotEmpty(String message) {
 		Set<ConstraintViolation<User>> violations = validator.validate(user);
 		assertNotEquals(message, violations.toString());
@@ -134,37 +142,30 @@ public class UserIT {
 //	}
 	
 	@Test
-	public void testFindById() throws UserNotFoundException {
+	public void testFindById() {
 		User actualUser = userService.findByUserId(user.getUserId());
 			assertEquals(user, actualUser);
 		}
-	
-//	@Test
-//	public void testFindByEmail() {
-//		User actualUser = userService.findByEmail(user.getEmail());
-//		assertEquals(user, actualUser);
-//	}
 	
 	@Test
 	public void testFindByUsername() throws UserNotFoundException {
 		User actualUser = userService.findByUsername(user.getUsername());
 		assertEquals(user, actualUser);
+	}
+	
+	@Test
+	void testCreateUserThrowsException(){
+		assertThrows(UserAlreadyExists.class, () -> {
+			userService.createUser(user);
+		});
 		
 	}
 	
-
 	@Test
-	public void testFindByUsername_InvalidUser() {
+	void testUpdateUserThrowsException(){
 		assertThrows(UserNotFoundException.class, () -> {
-			userService.findByUsername("invalidUser");
-			});
+			userService.updateUser(new User());
+		});
 	}
-	
-//	@Test
-//	public void testFindByUserEmailAndPassword() {
-//		User actualUser = userService.findByUserEmailAndPassword(user.getEmail(), user.getPassword());
-//		assertEquals(user, actualUser);
-//		
-//	}
 
 }

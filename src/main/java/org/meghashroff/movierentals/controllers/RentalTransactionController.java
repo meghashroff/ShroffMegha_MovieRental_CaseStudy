@@ -67,7 +67,7 @@ public class RentalTransactionController {
 			user.getRentalTrans().add(rental);
 			
 			request.setAttribute("currentTransaction", rental);
-			User savedUser = userService.createOrUpdateUser(user);
+			User savedUser = userService.updateUser(user);
 			model.addAttribute("currentuser", savedUser);
 			return "display_transaction_complete";
 		}

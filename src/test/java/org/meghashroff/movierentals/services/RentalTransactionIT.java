@@ -15,12 +15,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.meghashroff.movierentals.config.WebAppConfig;
+import org.meghashroff.movierentals.exceptions.UserAlreadyExists;
 import org.meghashroff.movierentals.models.Movie;
 import org.meghashroff.movierentals.models.RentalTransaction;
 import org.meghashroff.movierentals.models.User;
-import org.meghashroff.movierentals.services.MovieService;
-import org.meghashroff.movierentals.services.RentalTransactionService;
-import org.meghashroff.movierentals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -53,7 +51,7 @@ class RentalTransactionIT {
 	
 	
 	@BeforeAll
-	void setupAll() {
+	void setupAll() throws UserAlreadyExists {
 		user = new User("TestFirstName","TestLastName","test","test@email.com","test1234","2345678901");
 		this.movie1 = new Movie("Test", "Test", "2021", 
 				"images/test.jpg", "TestDesc");
@@ -71,7 +69,7 @@ class RentalTransactionIT {
 		List<RentalTransaction> trans = new ArrayList<RentalTransaction>();
 		trans.add(rentalTransaction);
 		user.setRentalTrans(trans);
-		userService.createOrUpdateUser(user);
+		userService.createUser(user);
 	}
 	
 	
