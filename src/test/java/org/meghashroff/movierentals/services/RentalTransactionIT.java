@@ -142,7 +142,6 @@ class RentalTransactionIT {
 	@Test
 	void testFindByRentalTransactionId() {
 		RentalTransaction actual = rentalTransactionService.findByRentalTransactionId(rentalTransaction.getRentalTransactionId());
-//		assertEquals(rentalTransaction, actual);
 		assertNotNull(actual);
 	}
 }

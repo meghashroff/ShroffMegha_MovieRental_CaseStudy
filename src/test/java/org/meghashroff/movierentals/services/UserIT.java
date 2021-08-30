@@ -40,7 +40,7 @@ import org.junit.jupiter.api.BeforeAll;
 @ContextConfiguration(classes = { WebAppConfig.class })
 @WebAppConfiguration("webapp")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserIT {
+class UserIT {
 
 	private RentalTransactionService rentalTransactionService;
 	private UserService userService;
@@ -148,7 +148,7 @@ public class UserIT {
 		}
 	
 	@Test
-	public void testFindByUsername() throws UserNotFoundException {
+	public void testFindByUsername(){
 		User actualUser = userService.findByUsername(user.getUsername());
 		assertEquals(user, actualUser);
 	}

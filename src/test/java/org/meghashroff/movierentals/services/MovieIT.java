@@ -22,7 +22,7 @@ import java.util.List;
 @ContextConfiguration(classes = { WebAppConfig.class })
 @WebAppConfiguration("webapp")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class MovieIT {
+class MovieIT {
 
 	private MovieService movieService;
 	private Movie movie1;
@@ -35,10 +35,10 @@ public class MovieIT {
 
 	@BeforeAll
 	 void setUp(){
-		this.movie1 = new Movie("MovieTest", "Test", "2021", 
-				"images/test.jpg", "TestDesc");
-		this.movie2 = new Movie("ABCDTest2", "Test2", "2021", 
-						"images/test2.jpg", "Test2Desc");
+		this.movie1 = new Movie("Family Movie Test", "test_family", "2021", 
+				"images/movie1.jpg", "This is a family movie");
+		this.movie2 = new Movie("Action Movie Test", "test_action", "2021", 
+						"images/movie2.jpg", "This is an action movie");
 		movie1= movieService.saveMovie(movie1);
 		movie2= movieService.saveMovie(movie2);
 	}
@@ -61,7 +61,7 @@ public class MovieIT {
 	}
 	
 	@Test
-	void findByMovieGenre() {
+	void testFindByMovieGenre() {
 		List<Movie> actual = (List<Movie>)movieService.findByMovieGenre(movie1.getMovieGenre());
 		assertEquals(movie1,actual.get(0));
 	}

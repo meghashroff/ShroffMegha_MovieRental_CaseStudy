@@ -12,7 +12,7 @@ import org.meghashroff.movierentals.services.impl.UserServiceImpl;
 import org.mockito.Mockito;
 
 
-public class MovieRentalsMockitoTest {
+public class UsersMockitoTest {
 
 	private static UserService userService;
 	private static UserRepository userRepository;

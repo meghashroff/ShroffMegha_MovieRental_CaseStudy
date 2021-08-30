@@ -49,7 +49,7 @@
 			            <table name="movieList" id="movieList">
 				            <thead>
 				                <tr class="header">
-				                    <th><input type="checkbox" onClick="toggle(this)"></th>
+				                    <th><!-- <input type="checkbox" onClick="toggle(this)"> --></th>
 				                    <th >Movie</th>
 				                    <th>Name</th>
 				                    <th>Genre</th>

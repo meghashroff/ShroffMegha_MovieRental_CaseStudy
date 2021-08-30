@@ -13,16 +13,16 @@ Views
 > HTML5, Java Server Pages, CSS3, Javascript
 
 Languages
->   Java
+>   Java 11
 
 Database
->   Maria DB
-
+>   Maria DB v2.7.3
+ 
 Web Server
->    Apache Tomcat
+>    Apache Tomcat v9.0
 
 Spring Framework
->    Spring MVC, Spring Data JPA, Spring Security 
+>    Spring MVC v5.3.9, Spring Data JPA v2.3.8 Release, Spring Security v5.5.1
 
 ---
 # Technical Specification
@@ -54,8 +54,9 @@ Spring Framework
 * As a user I should be able to delete my account if I wish to.
 
 # Challenges
-    This application uses Spring Data JPA. One of the biggest challenges I faced was during the implementation process. 
-    When a user, selects movie(s) to rent, the data would not persist in the data base. I had to change the way I was creating the relationship table and continue with the development of the application. 
+   * This application uses Spring Data JPA. One of the biggest challenges I faced was when a user, selects movie(s) to rent,and completes the entire flow, the data would not persist in the data base. I had to change the way I was creating the relationship table and continue with the development of the application. I initially had an embedded id in my classes, but it would give me value by reflection error when trying to save the data.On changing the mapping between the entites and also removed the additional attributes for the association, when trying to persist the data, I was getting detach object error. I removed the cascade type and then it worked.
+   * CSS file fails to reload on the page when a movie is removed from the list. I had to put the css inline in the page. But image is not being loaded. 
+   * Javascript file was throwing space issues. I had to remove all the spaces between my checks and also put the {} in the next line.
 
 
 

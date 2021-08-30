@@ -57,7 +57,7 @@ public class Movie {
 	}
 	
 	public Movie(Integer movieId, String movieName, String movieGenre, String movieReleaseYear, String movieImagePath,
-			String movieLink, String movieDescription, Set<RentalTransaction> rentals) {
+			String movieDescription, Set<RentalTransaction> rentals) {
 		this.movieId = movieId;
 		this.movieName = movieName;
 		this.movieGenre = movieGenre;

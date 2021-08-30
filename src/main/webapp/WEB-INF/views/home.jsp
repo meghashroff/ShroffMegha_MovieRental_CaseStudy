@@ -25,18 +25,14 @@
 	<h1 >All the movies in one place! </h1>
     <section id="about">
     <div class="about_container">
-        <p>
-        	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat metus eros, finibus mattis lorem ornare vel. Nunc eu quam hendrerit, ornare nunc eu, aliquet dui. Maecenas facilisis consequat sem vel consequat. Proin lacinia sed nulla vel dapibus. Fusce at arcu quis quam feugiat posuere a non ligula. Morbi ac sagittis justo, eu vestibulum dui. Maecenas augue purus, ullamcorper non dignissim sit amet, aliquam vitae ante.
+        <p style="font-size: xx-large; text-align: center">
+        	Missing out on movies? Want to watch at the comfort of your own home?
         </p>
-        <p>
-            Phasellus convallis laoreet sapien, ut molestie libero vehicula nec. Etiam feugiat ex quis metus efficitur semper. 
-            Vivamus dapibus lectus orci, non auctor augue tempus ac. Quisque semper ex sem, sed condimentum urna placerat id. 
-            Suspendisse bibendum lectus nulla, nec viverra neque iaculis vel. Morbi lorem velit, eleifend quis condimentum vitae, semper suscipit 
-            libero. Donec ante arcu, facilisis ut suscipit non, convallis sit amet ante. In tellus ante, fringilla et metus quis, sagittis porta velit.
-            Aliquam laoreet laoreet eros non mattis. In ut vestibulum dolor. Phasellus dignissim aliquam leo, eu efficitur enim convallis eget.
-            Donec pharetra ex non nulla tempus scelerisque. Sed lobortis egestas aliquet. Sed suscipit ex in nunc congue, a dignissim massa congue.
-        </p>
-        <br />
+        <p style="font-size: xx-large;">
+            Movie Rentals offers offers a wide selection of movies to select from so that you can watch movies in your own home, at your own time. 
+            We give you the best way to discover new content, completely free.
+		</p>
+	    <br />
     </div>
     <form action ="${pageContext.request.contextPath}/Movies" method="get">
 		<div id="rent">
